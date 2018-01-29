@@ -1,0 +1,70 @@
+					<!-- BEGIN: Modal panel to create or update user -->
+					
+					<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					        <h4 class="modal-title" id="exampleModalLabel">Crear o editar usuario</h4>
+					      </div>
+					      <form id="idFormEdit" name="formEdit" style="display:none" novalidate>
+					      <ng-form name="frmEdit">
+					      <div class="modal-body">
+					          <div class="form-group">
+					            <label for="recipient-name" class="control-label">Id:</label>
+					            <input ng-model="id" type="text" class="form-control" id="id" name="id" readonly="readonly">
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.name.$invalid && !frmEdit.name.$pristine }">
+					            <label for="recipient-name" class="control-label">Nombre:</label>
+					            <input ng-model="name" type="text" class="form-control" id="name" name="name" required ng-minlength="3" ng-maxlength="100" ng-pattern="/^[a-z-A-Z-0-9-\sñÑáÁéÉíÍóÓúÚü]*$/"/>
+					            <p ng-show="frmEdit.name.$dirty && frmEdit.name.$error.required" class="help-block">You name is required!</p>
+								<p ng-show="frmEdit.name.$dirty && frmEdit.name.$error.minlength" class="help-block">Your name is required to be at least 3 characters</p>
+								<p ng-show="frmEdit.name.$dirty && frmEdit.name.$error.maxlength" class="help-block">Your name cannot be longer than 100 characters</p>
+								<p ng-show="frmEdit.name.$dirty && frmEdit.name.$error.pattern" class="help-block">Only these works are valid a-z, A-Z, 0-9, -, black space, ñ, Ñ, á, Á, é, É, í, Í, ó, Ó, ú, Ú, ü. </p>
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.user.$invalid && !frmEdit.user.$pristine }">
+					            <label for="recipient-name" class="control-label">Usuario:</label>
+					            <input ng-model="user" type="text" class="form-control" id="user" name="user" required ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-z-A-Z-0-9-_]*$/" ng-unique="user"/>
+					            <p ng-show="frmEdit.user.$dirty && frmEdit.user.$error.required" class="help-block">You user is required!</p>
+								<p ng-show="frmEdit.user.$dirty && frmEdit.user.$error.minlength" class="help-block">Your user is required to be at least 8 characters</p>
+								<p ng-show="frmEdit.user.$dirty && frmEdit.user.$error.maxlength" class="help-block">Your user cannot be longer than 20 characters</p>
+								<p ng-show="frmEdit.user.$dirty && frmEdit.user.$error.pattern" class="help-block">Only these works are valid a-z, A-Z, 0-9, - and _.</p>
+								<p ng-show="frmEdit.user.$dirty && frmEdit.user.$error.unique" class="help-block">You user is not unique!. It must be unique!.</p>
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.password.$invalid && !frmEdit.password.$pristine }">
+					            <label for="recipient-name" class="control-label">Contraseña:</label>
+					            <input ng-model="password" type="password" class="form-control" id="password" name="password" required ng-minlength="6" ng-maxlength="15" ng-pattern="/^[a-z-A-Z-0-9-_]*$/"/>
+					            <p ng-show="frmEdit.password.$dirty && frmEdit.password.$error.required" class="help-block">You password is required!</p>
+								<p ng-show="frmEdit.password.$dirty && frmEdit.password.$error.minlength" class="help-block">Your password is required to be at least 6 characters</p>
+								<p ng-show="frmEdit.password.$dirty && frmEdit.password.$error.maxlength" class="help-block">Your password cannot be longer than 15 characters</p>
+								<p ng-show="frmEdit.password.$dirty && frmEdit.password.$error.pattern" class="help-block">Only these works are valid a-z, A-Z, 0-9, - and _.</p>
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.password_verify.$error.equalsTo && !frmEdit.password_verify.$pristine }">
+					            <label for="recipient-name" class="control-label">Repite la contraseña:</label>
+					            <input ng-model="password_verify" type="password" class="form-control" id="password_verify" name="password_verify" required equals-to="{[{password}]}" ng-pattern="/^[a-z-A-Z-0-9-_]*$/"/>
+								<p ng-show="frmEdit.password_verify.$dirty && frmEdit.password_verify.$error.equalsTo" class="help-block">Your passwords must be equals!!</p>
+								<p ng-show="frmEdit.password_verify.$dirty && frmEdit.password_verify.$error.pattern" class="help-block">Only these works are valid a-z, A-Z, 0-9, - and _.</p>
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.email.$invalid && !frmEdit.email.$pristine }">
+					            <label for="message-name" class="control-label">email:</label>
+					            <input type="email" ng-model="email" class="form-control" id="email" name="email" required ng-unique="email"/>
+								<p ng-show="frmEdit.email.$dirty && frmEdit.email.$error.required" class="help-block">You email is required!</p>
+								<p ng-show="frmEdit.email.$dirty && frmEdit.email.$error.email" class="help-block">You email is not correct!</p>
+								<p ng-show="frmEdit.email.$dirty && frmEdit.email.$error.unique" class="help-block">You email is not unique!. It must be unique!.</p>
+					          </div>
+					          <div class="form-group">
+					            <label for="recipient-name" class="control-label">Es administrador:</label>
+					            <input ng-model="isadmin" type="checkbox" class="checkbox" id="isadmin" name="isadmin"/>
+					          </div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" ng-click="closeEdit()" data-dismiss="modal">Cerrar</button>
+					        <button type="button" class="btn btn-primary" ng-click="sendEdit()" data-dismiss="modal" ng-disabled="frmEdit.$invalid">Enviar</button>
+					      </div>
+					      </ng-form>
+					      </form>
+					    </div>
+					  </div>
+					</div>
+					
+					<!-- END: Modal panel to create or update user -->

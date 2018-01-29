@@ -1,0 +1,19 @@
+ghost.title: THE GHOST GAME
+ghost.language.english.text: English
+ghost.language.spanish.text: Spanish
+ghost.controls.play: Play
+ghost.controls.reset: Reset
+ghost.404.title: 404 Not Found
+ghost.404.message: Sorry, an error has occured, Requested page not found!
+ghost.404.return: Take Me Home
+ghost.404.contact: Contact Support
+ghost.message.i.word.exists: I choice %letter% letter to play and the word %word% exists.
+ghost.message.i.word.not.exists: I choice %letter% letter to play and the word %word% not exists.
+ghost.message.i.word.you.turn: I choice %letter% letter to play. You turn!.
+ghost.message.you.word.exists: You choice letter %letter% and the word %word% exists.
+ghost.message.you.word.not.exists: You choice letter %letter% and the word %word% not exists
+ghost.javscript.error: You must use letters bewteen "a" and "z".You can not use capital letters.
+ghost.javscript.you.win: Ops!!. You Win!!!!
+ghost.javscript.you.lose: Well!!. You Lose!!!!
+ghost.footer.author.text: Author
+ghost.footer.phone.text: Phone

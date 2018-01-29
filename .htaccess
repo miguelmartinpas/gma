@@ -1,0 +1,5 @@
+//Rewrite to www
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^web.grupoemergenciapsicosociales.hol.es[nc]
+RewriteRule ^(.*)$ http://www.web.grupoemergenciapsicosociales.hol.es/$1 [r=301,nc]

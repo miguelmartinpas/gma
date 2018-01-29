@@ -1,0 +1,44 @@
+{% extends 'MapalGEPBundle:Base:base.html.twig' %}
+	
+{% block title_body %}Week list{% endblock %}
+
+{% block body -%}
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Week</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_week_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.week }}</td>
+                <td>{{ entity.year }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_week_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_week_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_week_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

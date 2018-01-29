@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+		{% block title %}
+			{{ 'gep.long.title' | trans }}
+		{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{% include "MapalGEPBundle:Default:stylesheet.html.twig" %}
+		{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body ng-app="gepApp">
+		<div class="container">
+
+	      {% include "MapalGEPBundle:Default:header.html.twig" %}
+	
+	      <!-- Main component for a primary marketing message or call to action -->
+	      <div class="container">
+			<div class="row row-gep">
+				<div class="col-sm-12 col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>{% block title_body %}Titulo del cuerpo{% endblock %}</strong>
+							<img id='id-loader' class='loader' src="/bundles/mapalgep/img/ajax-loader.gif" style="display: none;" />	
+						</div>
+						<div class="panel-body">
+							<form role="form" >
+	        				{% block body %}{% endblock %}   
+	       					</form>
+						</div>										
+						<div class="panel-footer text-right">
+							Developed by <a href="https://es.linkedin.com/in/miguelmartinpastor" target="_blank">Miguel Martín</a>.
+							<a href="http://www.gnu.org/licenses/gpl.html" target="_blank">
+							<img src="/bundles/mapalgep/img/gplv3-88x31.png" alt="GNU General Public License" title="GNU General Public License">
+							</a>
+						</div>
+	                </div>
+				</div>
+			</div>
+			
+			{% include "MapalGEPBundle:Default:footer.html.twig" %}
+			
+		  </div>
+	
+	  </div> <!-- /container -->   
+    </body>
+    
+    {% block javascripts %}
+		{% include "MapalGEPBundle:Default:script.html.twig" %}
+	{% endblock %}
+	{% block javascriptsextends %}{% endblock %}
+	
+</html>

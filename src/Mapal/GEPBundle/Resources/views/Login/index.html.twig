@@ -1,0 +1,98 @@
+{% extends 'MapalGEPBundle:Base:baselogin.html.twig' %}
+{% block title %}
+	{{ 'gep.long.title' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+	{% include "MapalGEPBundle:Default:stylesheet.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+	{% include "MapalGEPBundle:Default:script.html.twig" %}
+	    <script type="text/javascript" src="/bundles/mapalgep/Angular.JS/app.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Controller/LoginController.js"></script> 
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Directive/EnterDirective.js"></script>
+{% endblock %}
+	
+{% block body %}
+
+	<div class="container">
+
+      {% include "MapalGEPBundle:Default:header.html.twig" %}
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-4 col-md-offset-4">
+				<div class="panel panel-default" ng-controller="LoginController">
+					<div class="panel-heading">
+						<strong>{{ 'gep.long.title' | trans }}</strong>
+						<img id='id-loader' class='loader' src="/bundles/mapalgep/img/ajax-loader.gif" style="display: none;" />	
+					</div>
+					<div class="panel-body">
+						<form role="form" >
+							<fieldset>
+								<div id="idMensajeAlerta" class="alert alert-danger" role="alert" style="display:none">{[{ mensajeAlerta }]}</div>
+								<div class="row">
+									<div class="center-block">
+										<img class="profile-img" src="/bundles/mapalgep/img/logo.png" alt="{{ 'gep.long.title' | trans }}" title="{{ 'gep.long.title' | trans }}">
+									</div>
+								</div>
+								<div class="row" >
+									<div class="col-sm-12 col-md-10  col-md-offset-1 ">
+										<div class="form-group" >
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="glyphicon glyphicon-user"></i>
+												</span> 
+												<input ng-model="user" class="form-control" placeholder="Usuario" name='user' id='id-user' type="text" autofocus maxlength="50" size="50" ng-enter="loginAction(false)"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="glyphicon glyphicon-lock"></i>
+												</span>
+												<input ng-model="pass" class="form-control" placeholder="Contraseña" name='pass' id='id-pass' type="password" maxlength="50" size="50" ng-enter="loginAction(false)"/>
+											</div>
+										</div>			
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-12 ">
+												<button ng-click="loginAction(true)" type="button" name='enter' id='id-enter' class="btn btn-lg btn-primary btn-block" >
+												<i id="idIconButton" class="glyphicon"></i> 
+												<img id='id-loader-sigin' class='loader' src="/bundles/mapalgep/img/ajax-loader.gif" style="display: none;" />
+      											{{ 'gep.login.signin' | trans }}
+												</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>										
+					<div class="panel-footer text-right">
+						Developed by <a href="https://es.linkedin.com/in/miguelmartinpastor" target="_blank">Miguel Martín</a>.
+						<a href="http://www.gnu.org/licenses/gpl.html" target="_blank">
+							<img src="/bundles/mapalgep/img/gplv3-88x31.png" alt="GNU General Public License" title="GNU General Public License">
+						</a>
+						
+						<div class="btn-group dropup">
+  <button type="button" class="btn btn-default">Dropup</button>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+</div>
+						
+					</div>
+                </div>
+			</div>
+		</div>
+		
+	</div>
+
+    </div> <!-- /container -->
+
+{% endblock %}  

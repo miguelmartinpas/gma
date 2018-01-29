@@ -1,0 +1,41 @@
+					<!-- BEGIN: Modal panel to create or update user -->
+					
+					<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					        <h4 class="modal-title" id="exampleModalLabel">Crear o editar usuario</h4>
+					      </div>
+					      <form id="idFormEdit" name="formEdit" style="display:none" novalidate>
+					      <ng-form name="frmEdit">
+					      <div class="modal-body">
+					          <div class="form-group">
+					            <label for="recipient-name" class="control-label">Id:</label>
+					            <input ng-model="id" type="text" class="form-control" id="id" name="id" readonly="readonly">
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.key.$invalid && !frmEdit.key.$pristine }">
+					            <label for="recipient-key" class="control-label">{{ 'gep.systemparam.key'| trans }}:</label>
+					            <input ng-model="key" type="text" class="form-control" id="key" name="key" required ng-maxlength="100" ng-pattern="/^[a-z-A-Z-0-9-]*$/" ng-unique="key"/>
+					            <p ng-show="frmEdit.key.$dirty && frmEdit.key.$error.required" class="help-block">The kwy is required!</p>
+								<p ng-show="frmEdit.key.$dirty && frmEdit.key.$error.maxlength" class="help-block">The key cannot be longer than 100 characters</p>
+								<p ng-show="frmEdit.key.$dirty && frmEdit.key.$error.pattern" class="help-block">Only these works are valid a-z, A-Z, 0-9, -. </p>
+								<p ng-show="frmEdit.key.$dirty && frmEdit.key.$error.unique" class="help-block">The key is not unique!. It must be unique!.</p>
+					          </div>
+					          <div class="form-group" ng-class="{ 'has-error' : frmEdit.value.$invalid && !frmEdit.user.$pristine }">
+					            <label for="recipient-value" class="control-label">{{ 'gep.systemparam.value'| trans }}:</label>
+					            <input ng-model="value" type="text" class="form-control" id="value" name="value" required />
+					            <p ng-show="frmEdit.value.$dirty && frmEdit.value.$error.required" class="help-block">The value is required!</p>								
+					          </div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" ng-click="closeEdit()" data-dismiss="modal">Cerrar</button>
+					        <button type="button" class="btn btn-primary" ng-click="sendEdit()" data-dismiss="modal" ng-disabled="frmEdit.$invalid">Enviar</button>
+					      </div>
+					      </ng-form>
+					      </form>
+					    </div>
+					  </div>
+					</div>
+					
+					<!-- END: Modal panel to create or update user -->

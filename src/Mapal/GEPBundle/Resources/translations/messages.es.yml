@@ -1,0 +1,28 @@
+gep.short.title: GEP
+gep.long.title: Grupo Emergencia Psicosociales
+
+gep.language.english.text: Ingles
+gep.language.spanish.text: Español
+
+gep.login.signin: Entrar
+gep.login.forget: He olvidado mi contraseña
+gep.login.remember: Recordar
+
+gep.user.title: Usuarios
+gep.user.username: Usuario
+gep.user.email: Email
+gep.user.name: Nombre
+
+gep.timetable.title: Turnos
+
+gep.link.user: Usuarios
+gep.link.home: Inicio
+gep.link.systemparam: Parámetros del sistema
+gep.link.logout: Salir
+
+gep.form.borrar.title: Eliminar usuario
+gep.form.borrar.title: Eliminar
+
+gep.systemparam.title: Parámetros del sistema
+gep.systemparam.key: Clave
+gep.systemparam.value: Valor

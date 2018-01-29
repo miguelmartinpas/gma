@@ -1,0 +1,68 @@
+{% extends 'MapalGEPBundle:Base:base.html.twig' %} 
+
+{% block title_body%}{{ 'gep.user.title' | trans }}{% endblock %} 
+
+{% block javascriptsextends %}
+	    <script type="text/javascript" src="/bundles/mapalgep/Angular.JS/app.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Controller/UserController.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Directive/PasswordVerifyDirective.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Directive/UniqueDirective.js"></script>
+{% endblock %}
+
+{% block body -%}
+
+<div class="panel-body" ng-controller="UserController">
+	<div class="panel panel-primary">
+		<div class="input-group">
+		  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+		  <input type="text" class="form-control" placeholder="Buscar usuario" ng-model="search">
+		</div>
+	</div>
+	<div class="slimScrollDiv">
+		<table id="idUserTable" class="table table-striped" style="display:none">
+			<thead>
+				<tr>
+					<th class="no-movil">
+						<i class="glyphicon glyphicon-user"></i>
+						{{ 'gep.user.username'| trans }}
+						<a href="" ng-click="orderFieldBy('user')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+						<a href="" ng-click="orderFieldBy('-user')"><i class="glyphicon glyphicon-arrow-down"></i></a>					
+					</th>
+					<th>
+						<i class="glyphicon glyphicon-chevron-right"></i> 
+						{{ 'gep.user.name' | trans }}
+						<a class="no-movil" href="" ng-click="orderFieldBy('name')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+						<a class="no-movil" href="" ng-click="orderFieldBy('-name')"><i class="glyphicon glyphicon-arrow-down"></i></a>				
+					</th>
+					<th class="no-movil">
+						<i class="glyphicon glyphicon-envelope"></i> 
+						{{ 'gep.user.email' | trans }}
+						<a href="" ng-click="orderFieldBy('email')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+						<a href="" ng-click="orderFieldBy('-email')"><i class="glyphicon glyphicon-arrow-down"></i></a>	
+					</th>
+					<th class="text-right">
+					<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="edit(0)">Crear usuario</button>
+					&nbsp;&nbsp;
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr ng-repeat="user in users | orderBy:selectedOrder | filter:search">
+					<td class="no-movil">{[{ user.user }]}</td>
+					<td>{[{ user.name }]}</td>
+					<td class="no-movil">{[{ user.email }]}</td>
+					<td class="text-right">
+						<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="edit(user.id)">Editar</button>
+						<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#deleteModal" ng-click="remove(user.id)">Eliminar</button>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	{% include "MapalGEPBundle:User:update.html.twig" %} 
+	{% include "MapalGEPBundle:User:delete.html.twig" %} 
+</div>
+
+{% endblock %}

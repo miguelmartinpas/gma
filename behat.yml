@@ -1,0 +1,89 @@
+firefox:
+  suites:
+    default:
+        contexts:
+            - FeatureContext:
+                session:   '@session'
+            - LoginContext:
+                session:   '@session'            
+  extensions:
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: http://127.0.0.1:8000
+      browser_name: 'firefox' 
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2:  
+        wd_host: "http://localhost:4444/wd/hub"
+        
+chrome:
+  suites:
+    default:
+        contexts:
+            - FeatureContext:
+                session:   '@session'
+            - LoginContext:
+                session:   '@session'
+  extensions:
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: http://127.0.0.1:8000 
+      browser_name: 'chrome' 
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2: 
+         wd_host: "http://localhost:4444/wd/hub"
+         
+safari:
+  suites:
+    default:
+        contexts:
+            - FeatureContext:
+                session:   '@session'
+            - LoginContext:
+                session:   '@session'
+  extensions:
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: http://127.0.0.1:8000
+      browser_name: 'safari' 
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2: 
+        wd_host: "http://localhost:5555/wd/hub"
+         
+phantomjs:
+  suites:
+    default:
+        contexts:
+            - FeatureContext:
+                session:   '@session'
+            - LoginContext:
+                session:   '@session'
+  extensions:
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: http://127.0.0.1:8000 
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2: 
+         wd_host: "http://localhost:8643/wd/hub"
+         
+produccion-firefox:
+  suites:
+    default:
+        contexts:
+            - FeatureContext:
+                session:   '@session'
+            - LoginContext:
+                session:   '@session'
+  extensions:
+    Behat\Symfony2Extension: ~
+    Behat\MinkExtension:
+      base_url: http://web.grupoemergenciapsicosociales.hol.es
+      browser_name: 'firefox' 
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2:  
+        wd_host: "http://localhost:4444/wd/hub"
+

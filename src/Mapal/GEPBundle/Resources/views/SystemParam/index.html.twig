@@ -1,0 +1,59 @@
+{% extends 'MapalGEPBundle:Base:base.html.twig' %} 
+
+{% block title_body%}{{ 'gep.systemparam.title' | trans }}{% endblock %} 
+
+{% block javascriptsextends %}
+		<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/app.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Controller/SystemParamController.js"></script> 
+{% endblock %}
+
+{% block body -%}
+
+<div class="panel-body" ng-controller="SystemParamController">
+	<div class="panel panel-primary">
+		<div class="input-group">
+		  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+		  <input type="text" class="form-control" placeholder="Buscar parámetro" ng-model="search">
+		</div>
+	</div>
+	<div class="slimScrollDiv">
+		<table id="idSysteParamTable" class="table table-striped" style="display:none">
+			<thead>
+				<tr>
+					<th>
+						<i class="glyphicon glyphicon-record"></i>
+						{{ 'gep.systemparam.key'| trans }}
+						<a class="no-movil" href="" ng-click="orderFieldBy('key')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+						<a class="no-movil" href="" ng-click="orderFieldBy('-key')"><i class="glyphicon glyphicon-arrow-down"></i></a>					
+					</th>
+					<th class="no-movil">
+						<i class="glyphicon glyphicon-download"></i> 
+						{{ 'gep.systemparam.value' | trans }}
+						<a href="" ng-click="orderFieldBy('value')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+						<a href="" ng-click="orderFieldBy('-value')"><i class="glyphicon glyphicon-arrow-down"></i></a>				
+					</th>
+					<th class="text-right">
+					<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="edit(0)">Crear Campo</button>
+					&nbsp;&nbsp;
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr ng-repeat="systemParam in systemParams | orderBy:selectedOrder | filter:search">
+					<td>{[{ systemParam.key }]}</td>
+					<td class="no-movil">{[{ systemParam.value }]}</td>
+					<td class="text-right">
+						<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="edit(systemParam.key)">Editar</button>
+						<button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#deleteModal" ng-click="remove(systemParam.key)">Eliminar</button>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	{% include "MapalGEPBundle:SystemParam:update.html.twig" %} 
+	{% include "MapalGEPBundle:SystemParam:delete.html.twig" %} 
+</div>
+
+{% endblock %}

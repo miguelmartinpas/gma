@@ -1,0 +1,27 @@
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="error-template">
+					<h1>Oops!</h1>
+					<h2>
+						{{ 'ghost.404.title' | trans }} 
+					</h2>
+					<div class="error-details">
+						{{ 'ghost.404.message' | trans }} 
+					</div>
+					<div class="error-actions">
+						<a href="/" class="btn btn-primary btn-lg">
+							<span class="glyphicon glyphicon-home"></span> 
+							{{ 'ghost.404.return' | trans }} 
+						</a>
+						<a href="/" class="btn btn-default btn-lg">
+							<span class="glyphicon glyphicon-envelope"></span> 
+							{{ 'ghost.404.contact' | trans }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+

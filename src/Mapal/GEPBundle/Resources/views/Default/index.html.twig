@@ -1,0 +1,79 @@
+{% extends 'MapalGEPBundle:Base:base.html.twig' %}
+	
+{% block title_body %}{{ 'gep.timetable.title' | trans }}{% endblock %}
+
+{% block javascriptsextends %}
+
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/app.js"></script>
+    	<script type="text/javascript" src="/bundles/mapalgep/Angular.JS/Controller/TimeTableController.js"></script>
+
+{% endblock %}
+	
+{% block body %}	
+				<div class="well well-sm col-sm-12">
+				<div class="col-md-6 col-md-4 col-md-offset-4" ng-controller="TimeTableController">
+				  
+				  	<div class="panel panel-default panel-primary" id="idTimeTable" style="display: none;" >
+					  <div class="panel-heading text-center">				  
+						  <button id="idMonthBefore" ng-click='changeMonth(-1)' class="btn btn-default btn-sm " type="button"><i class="glyphicon glyphicon-chevron-left"></i></button>
+						  <button id="idMonthTitle"  class="btn btn-default btn-sm no-movil" type="button" ><strong>{[{ monthName }]} {[{ year }]}</strong></button>
+						  <button id="idMonthTitleShort"  class="btn btn-default btn-sm movil" type="button" ><strong>{[{ monthNameShort }]} {[{ year }]}</strong></button>
+						  <button id="idMonthAfter" ng-click='changeMonth(1)' class="btn btn-default btn-sm " type="button"><i class="glyphicon glyphicon-chevron-right"></i></button>
+						  <button id="idMonthHome" ng-click='changeToNow()' title="{[{ returnMessage }]}" class="btn btn-default btn-sm no-movil" type="button"><i class="glyphicon glyphicon-home"></i></button>
+					  </div>
+					  <div class="panel-body">
+					  
+					    <table>
+				   
+						  	<tbody>
+						  		
+						  		<tr class="text-center">
+						  		
+						  			 <td colspan="3">
+						  
+										 <table>
+										   
+										  	<tbody>
+										  	
+										  		<tr class="text-center">
+										  			<th></th>
+										  			<th class="text-center" ng-repeat="week in weeks">{[{week}]}</th>
+										  		</tr>
+										  		
+										  		 <tr class="text-center" ng-repeat="user in users">
+										  			
+										  			<td class="text-left h6">
+										  			<button id="inName" type="button" class="btn btn-link {[{user.disablebutton}]} gep-button-user no-movil" ng-click='nextAllStatus(user.id)'>{[{user.name}]}:</button>
+										  			<button id="idShortName" type="button" title="{[{user.name}]}" class="btn btn-link {[{user.disablebutton}]} gep-button-user movil" ng-click='nextAllStatus(user.id)'>{[{user.shortname}]}:</button>
+										  			</td>
+										  			
+										  			<td id="" class="text-center" ng-repeat="week in user.weeks">
+										  			
+										  				<button id="id_{[{ user.id }]}_{[{ week.week.id }]}_{[{ week.status.id }]}" ng-click='nextStatus(user.id,week.week.id,week.status.id)' class="btn btn-default btn-sm {[{ week.status.colour }]} {[{user.disablebutton}]} " type="button" title="{[{ week.status.name }]}" {[{user.disablebutton}]}>
+										  				<i id="id_{[{ user.id }]}_{[{ week.week.id }]}_{[{ week.status.id }]}_icon" class="glyphicon {[{ week.status.icon }]}"></i>
+										  				<img id='id-loader_{[{ user.id }]}_{[{ week.week.id }]}_{[{ week.status.id }]}' class='loader-button' src="/bundles/mapalgep/img/ajax-loader.gif" style="display: none;" />	
+										  				</button>
+										  			
+										  			</td>
+										  		
+										  		</tr>
+										  		
+										  	</tbody>
+										  	
+										  </table>
+									  
+									  </td>
+									  
+								</tr>
+								
+							</tbody>
+							
+						</table>
+					  
+					  </div>
+					</div>						
+				  
+				</div>
+				</div>
+				
+{% endblock %}  

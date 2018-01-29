@@ -1,0 +1,31 @@
+
+      <!-- BEGIN: Static navbar -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand no-movil" href="">
+            <img class="profile-img-logo" src="/bundles/mapalgep/img/logo.png" alt="{{ 'gep.long.title' | trans }}" title="{{ 'gep.long.title' | trans }}"> 
+            {{ 'gep.long.title' | trans }}</a>
+            <a class="navbar-brand movil" href="">
+            <img class="profile-img-logo" src="/bundles/mapalgep/img/logo.png" alt="{{ 'gep.long.title' | trans }}" title="{{ 'gep.long.title' | trans }}"> 
+            {{ 'gep.short.title' | trans }}</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+          
+            {% for link in menu %}
+            	<li><a id="{{ link.id }}" class="navbar-link" href="{{ link.link }}">{{ link.name }}</a></li>
+			{% endfor %}
+        
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+        
+      </nav>
+	<!-- END: Static navbar -->

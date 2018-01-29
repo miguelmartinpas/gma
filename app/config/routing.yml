@@ -1,0 +1,5 @@
+mapal_gma:
+    resource: "@MapalGEPBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
